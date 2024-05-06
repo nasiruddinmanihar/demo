@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Planner</title>
+    <link rel="stylesheet" href="HomePage.css">
+</head>
+<body>
+    <h1>Task Planner</h1>
+
+    <input type="text" id="searchInput" placeholder="Search...">
+    <select id="searchType">
+        <option value="taskName">Task Name</option>
+        <option value="taskId">Task ID</option>
+        <option value="startDate">Start Date</option>
+        <option value="endDate">End Date</option>
+        <option value="status">Status</option>
+        <option value="subTaskName">Sub Task Name</option>
+        <option value="subStartDate">Sub Task Start Date</option>
+        <option value="subEndDate">Sub Task End Date</option>
+        <option value="subStatus">Sub Task Status</option>
+    </select>
+    <button onclick="searchTasks()">Search</button>
+    <br>
+    <br>
+    <button onclick="showAllTasks()">Show All Tasks</button>
+    <br>
+    <br>
+
+    <form id="taskForm">
+        <!-- Parent Task -->
+        <h2>Parent Task</h2>
+        <label for="parentTaskId">Task ID:</label>
+        <input type="text" id="parentTaskId" required><br>
+        
+        <label for="parentTaskName">Task Name:</label>
+        <input type="text" id="parentTaskName" required><br>
+        
+        <label for="parentStartDate">Start Date:</label>
+        <input type="date" id="parentStartDate" onchange="validateDates(); updateStatus() " required><br>
+        <span id="startDateError" style="color: red;"></span><br>
+        
+        <label for="parentEndDate">End Date:</label>
+        <input type="date" id="parentEndDate" onchange="validateDates(); updateStatus()" required><br>
+        <span id="endDateError" style="color: red;"></span><br>
+        
+        <label for="parentStatus">Status:</label>
+        <select id="parentStatus">
+            <option value="In-Progress"  disabled style="color: blue;">In-Progress</option>
+            <option value="Completed" disabled style="color: green;">Completed</option>
+            <option value="Canceled" disabled style="color: red;">Canceled</option>
+            <option value="Due-Passed" disabled style="color: orange;">Due-Passed</option>
+        </select><br>
+        
+        <!-- Sub-Task -->
+        <h2>Sub-Tasks</h2>
+        <div id="subTaskInputs">
+            <!-- Subtask input fields will be added dynamically here -->
+        </div>
+        <button type="button" onclick="addSubTask()">Add Sub-Task</button>
+        
+        <br>
+        <br>
+        
+        <button type="submit">Add Task</button>
+        
+    </form>
+
+    <!-- Display section -->
+    <div id="taskDisplay">
+        <h2>Task Details</h2>
+        <!-- Task details will be displayed here -->
+    </div>
+
+    <script src="index.js"></script>    
+
+  
+</body>
+</html>
